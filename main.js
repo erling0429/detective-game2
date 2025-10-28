@@ -5,7 +5,7 @@
 */
 let feedData = [];
 
-fetch('/data/feed.json')
+fetch('./data/feed.json')
   .then(res => res.json())
   .then(data => {
     feedData = data;
@@ -25,7 +25,7 @@ let currentChatRoom = null; // 현재 열려 있는 채팅방 id
 const shownDialogues = new Set(); // ✅ F5 누르면 항상 비어있는 상태로 시작
   
 // ✅ 채팅 데이터 로딩 및 목록 출력
-fetch('/data/chat.json')
+fetch('./data/chat.json')
 .then(res => res.json())
 .then(data => {
   chatData = data.map(room => ({ ...room, completed: false })); // 초기 상태 설정
@@ -99,9 +99,7 @@ const bgmTracks = {
  * - 이 배열의 순서대로 대화가 진행됨
  */
 const dialogues = [
-  {    speaker: '루시안',    side: 'left',    text: '어서, 시스템을 되찾아야 해!',    image: 'assets/char/lucian.png'  },
-  {    speaker: '와이즈',    side: 'right',    text: '저 녀석이 H.D.D를 통제하게 놔둘 순 없어.',    image: 'assets/char/wise.png'  },
-  {    speaker: '와이즈',    side: 'right',    text: '방법을 찾아야 해...',    image: 'assets/char/wise.png'  }
+
 ];
 
 
@@ -877,7 +875,7 @@ function loadDialogueSet(key, callback, isOneTime = true) {
     return;
   }
 
-  fetch('/data/dialogues.json')
+  fetch('./data/dialogues.json')
     .then(res => res.json())
     .then(data => {
       if (data[key]) {
